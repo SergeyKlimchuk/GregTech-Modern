@@ -258,6 +258,7 @@ public abstract class PipeBlock<PipeType extends Enum<PipeType> & IPipeType<Node
                     pipeTile.setConnection(facing, false, false);
                 updateActiveNodeStatus(level, pos, pipeTile);
             }
+            pipeTile.getCoverContainer().onNeighborChanged(block, fromPos, isMoving);
         }
     }
 
