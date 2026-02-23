@@ -340,6 +340,12 @@ public class GTRecipeType implements RecipeType<GTRecipe> {
         return Component.translatable(getTranslationKey());
     }
 
+    @ApiStatus.Internal
+    public void beginStagingRecipes() {
+        categoryMap.clear();
+        additionHandler.beginStaging();
+    }
+
     public interface ICustomRecipeLogic {
 
         /**
