@@ -47,6 +47,7 @@ dependencies {
     compileOnly(forge.ftbchunks)
     compileOnly(forge.xaerosminimap)
     compileOnly(forge.xaerosworldmap)
+    compileOnly(forge.xaerolib)
     compileOnly(forge.journeymap.api)
     compileOnly(forge.journeymap.forge)
 

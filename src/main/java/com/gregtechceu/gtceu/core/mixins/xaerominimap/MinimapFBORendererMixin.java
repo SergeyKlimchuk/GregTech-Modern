@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import xaero.common.IXaeroMinimap;
+import xaero.common.HudMod;
 import xaero.common.minimap.MinimapProcessor;
 import xaero.common.minimap.render.MinimapFBORenderer;
 import xaero.common.minimap.render.MinimapRenderer;
@@ -26,7 +26,7 @@ public abstract class MinimapFBORendererMixin extends MinimapRenderer {
     @Shadow
     private MinimapElementMapRendererHandler minimapElementMapRendererHandler;
 
-    public MinimapFBORendererMixin(IXaeroMinimap modMain, Minecraft mc, WaypointsGuiRenderer waypointsGuiRenderer,
+    public MinimapFBORendererMixin(HudMod modMain, Minecraft mc, WaypointsGuiRenderer waypointsGuiRenderer,
                                    Minimap minimap, CompassRenderer compassRenderer) {
         super(modMain, mc, waypointsGuiRenderer, minimap, compassRenderer);
     }

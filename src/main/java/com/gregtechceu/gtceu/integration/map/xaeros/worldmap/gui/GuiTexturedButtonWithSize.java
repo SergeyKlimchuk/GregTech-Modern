@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import xaero.map.gui.CursorBox;
+import xaero.lib.client.gui.widget.Tooltip;
 import xaero.map.gui.GuiTexturedButton;
 
 import java.util.function.Supplier;
@@ -16,8 +16,8 @@ public class GuiTexturedButtonWithSize extends GuiTexturedButton {
 
     public GuiTexturedButtonWithSize(int x, int y, int w, int h, int textureX, int textureY, int textureW, int textureH,
                                      int spriteW, int spriteH, ResourceLocation texture, OnPress onPress,
-                                     Supplier<CursorBox> tooltip) {
-        super(x, y, w, h, textureX, textureY, textureW, textureH, texture, onPress, tooltip);
+                                     Supplier<? extends Tooltip> tooltip) {
+        super(x, y, w, h, textureX, textureY, textureW, textureH, texture, onPress, tooltip::get);
         this.spriteW = spriteW;
         this.spriteH = spriteH;
     }

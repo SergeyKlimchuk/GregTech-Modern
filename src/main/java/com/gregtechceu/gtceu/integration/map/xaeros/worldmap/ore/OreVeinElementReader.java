@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 import xaero.map.WorldMap;
+import xaero.map.common.config.option.WorldMapProfiledConfigOptions;
 import xaero.map.element.MapElementReader;
 import xaero.map.gui.CursorBox;
 import xaero.map.gui.IRightClickableElement;
@@ -56,14 +57,19 @@ public class OreVeinElementReader extends
         return ConfigHolder.INSTANCE.compat.minimap.oreIconSize;
     }
 
+    private static boolean hasWaypointBackgrounds() {
+        return WorldMap.INSTANCE.getConfigs().getClientConfigManager()
+                .getEffective(WorldMapProfiledConfigOptions.WAYPOINT_BACKGROUNDS);
+    }
+
     @Override
     public int getInteractionBoxTop(OreVeinElement element, OreVeinElementContext context, float partialTicks) {
-        return WorldMap.settings.waypointBackgrounds ? -41 : -12;
+        return hasWaypointBackgrounds() ? -41 : -12;
     }
 
     @Override
     public int getInteractionBoxBottom(OreVeinElement element, OreVeinElementContext context, float partialTicks) {
-        return WorldMap.settings.waypointBackgrounds ? 0 : 12;
+        return hasWaypointBackgrounds() ? 0 : 12;
     }
 
     @Override
