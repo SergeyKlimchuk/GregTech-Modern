@@ -78,6 +78,7 @@ public abstract class RecipeManagerLateMixin {
         SteamBoilerLogic.clearBoilerRecipeCaches();
         for (RecipeType<?> recipeType : BuiltInRegistries.RECIPE_TYPE) {
             if (recipeType instanceof GTRecipeType gtRecipeType) {
+                gtRecipeType.clearCategoryMap();
                 gtRecipeType.getLookup().removeAllRecipes();
 
                 var proxyRecipes = gtRecipeType.getProxyRecipes();

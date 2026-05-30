@@ -341,9 +341,8 @@ public class GTRecipeType implements RecipeType<GTRecipe> {
     }
 
     @ApiStatus.Internal
-    public void beginStagingRecipes() {
+    public void clearCategoryMap() {
         categoryMap.clear();
-        additionHandler.beginStaging();
     }
 
     public interface ICustomRecipeLogic {
