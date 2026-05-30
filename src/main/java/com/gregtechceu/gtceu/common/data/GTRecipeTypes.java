@@ -73,6 +73,7 @@ public class GTRecipeTypes {
                     GTRecipeTypes.LARGE_BOILER_RECIPES.copyFrom(builder).duration(duration).save(provider);
                 }
             })
+            .addCustomRecipeLogic(SteamBoilerLogic.INSTANCE)
             .setSound(GTSoundEntries.FURNACE);
 
     //////////////////////////////////////

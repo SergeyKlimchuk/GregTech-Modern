@@ -2,6 +2,7 @@ package com.gregtechceu.gtceu.common.machine.steam;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
+import com.gregtechceu.gtceu.utils.GTUtil;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
@@ -50,14 +51,17 @@ public class SteamSolidBoilerMachine extends SteamBoilerMachine {
             }
             return FUEL_CACHE.computeIfAbsent(itemStack.getItem(), item -> {
                 if (isRemote()) return true;
-                return recipeLogic.getRecipeManager().getAllRecipesFor(getRecipeType()).stream().anyMatch(recipe -> {
-                    var list = recipe.value().inputs.getOrDefault(ItemRecipeCapability.CAP, Collections.emptyList());
-                    if (!list.isEmpty()) {
-                        return Arrays.stream(ItemRecipeCapability.CAP.of(list.getFirst().content).getItems())
-                                .map(ItemStack::getItem).anyMatch(i -> i == item);
-                    }
-                    return false;
-                });
+                boolean hasRecipe = recipeLogic.getRecipeManager().getAllRecipesFor(getRecipeType()).stream()
+                        .anyMatch(recipe -> {
+                            var list = recipe.value().inputs.getOrDefault(ItemRecipeCapability.CAP,
+                                    Collections.emptyList());
+                            if (!list.isEmpty()) {
+                                return Arrays.stream(ItemRecipeCapability.CAP.of(list.getFirst().content).getItems())
+                                        .map(ItemStack::getItem).anyMatch(i -> i == item);
+                            }
+                            return false;
+                        });
+                return hasRecipe || GTUtil.getItemBurnTime(item) > 0;
             });
         });
         this.ashHandler = createAshHandler();

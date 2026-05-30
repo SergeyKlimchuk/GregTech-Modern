@@ -1,0 +1,29 @@
+## What
+Fixes the steam solid boiler not accepting solid fuel (coal, charcoal, etc.) on 1.21.
+
+## Implementation Details
+`FuelRecipes.init()` in the 1.21 port removed the loop that registered furnace fuels as `STEAM_BOILER_RECIPES` item recipes, leaving a comment that a "SteamBoilerLogic" class would handle it — which was never implemented.
+
+Without item recipes in `STEAM_BOILER_RECIPES`, the `fuelHandler` filter in `SteamSolidBoilerMachine` returned `false` for all solid items server-side (client-side always returned `true`), so coal/charcoal could not be inserted.
+
+Also fixes `runData` failing with `NoClassDefFoundError` on `BuilderBase` (KubeJS) after KubeJS was moved to `extraLocalRuntime` in #4826 — `runData` uses `runtimeClasspath` which only extends `localRuntime`.
+
+### AI Usage
+
+- [x] Yes AI driven tools were used for this pull request.
+
+#### Agent Used
+Claude Sonnet 4.6 (Claude Code)
+
+#### Agent Usage Description
+Used to investigate the root cause of the boiler bug and identify the missing fuel recipe registration. All code was reviewed by the PR submitter before opening.
+
+## Outcome
+- Fixes steam solid boiler not accepting coal/charcoal/wood as fuel
+- Fixes `runData` task failing after #4826
+
+## How Was This Tested
+Tested in-game: coal and charcoal can be inserted into the solid boiler fuel slot and the boiler activates correctly.
+
+## Potential Compatibility Issues
+Recipe changes: all standard furnace fuels are now registered as `STEAM_BOILER_RECIPES` item recipes, same as in 1.20.1.
