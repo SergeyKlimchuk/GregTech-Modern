@@ -92,19 +92,11 @@ resourcefullib      = { module = "com.teamresourceful.resourcefullib:resourceful
 bookshelf           = { module = "net.darkhax.bookshelf:bookshelf-neoforge-1.21.1", version.ref = "bookshelf" }
 ae2wtlib            = { module = "de.mari_023:ae2wtlib", version.ref = "ae2wtlib" }
 # TODO update these once there's 1.21 versions
-<<<<<<< HEAD
 # argonauts           = { module = "earth.terrarium.argonauts:argonauts-neoforge-1.21.1`", version.ref = "argonauts" }
 # heracles            = { module = "earth.terrarium.heracles:heracles-neoforge-1.21.1", version.ref = "heracles" }
-=======
-argonauts           = { module = "earth.terrarium.argonauts:argonauts-neoforge-1.20.4", version.ref = "argonauts" }
-heracles            = { module = "earth.terrarium.heracles:heracles-forge-1.20.1", version.ref = "heracles" }
-# these will be the new names of the projects when they finally update to 1.21
-# argonauts           = { module = "earth.terrarium.odyssey_allies:odyssey_allies-neoforge-1.21.1`", version.ref = "argonauts" }
-# heracles            = { module = "earth.terrarium.odyssey_quests:odyssey_quests-neoforge-1.21.1", version.ref = "heracles" }
 xaeroslib           = { module = "xaero.lib:xaerolib-neoforge-1.21.1", version.ref = "xaerosLib" }
 xaerosworldmap      = { module = "xaero.map:xaeroworldmap-neoforge-1.21.1", version.ref = "xaerosWorldMap" }
 xaerosminimap       = { module = "xaero.minimap:xaerominimap-neoforge-1.21.1", version.ref = "xaerosMinimap" }
->>>>>>> d2d162740 (1.21 Xaero's series fix (#4642))
 
 jade                = { module = "maven.modrinth:jade", version.ref = "jade" }
 sodium              = { module = "maven.modrinth:sodium", version.ref = "sodium" }
