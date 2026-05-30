@@ -797,7 +797,17 @@ public class GTRecipeBuilder {
     }
 
     public GTRecipeBuilder chancedInput(ItemStack stack, int chance, int tierChanceBoost) {
-        return chancedInput(SizedIngredient.create(stack), chance, tierChanceBoost);
+        if (checkChanceAndPrintError(chance)) {
+            return this;
+        }
+        int lastChance = this.chance;
+        int lastTierChanceBoost = this.tierChanceBoost;
+        this.chance = chance;
+        this.tierChanceBoost = tierChanceBoost;
+        inputItems(stack);
+        this.chance = lastChance;
+        this.tierChanceBoost = lastTierChanceBoost;
+        return this;
     }
 
     public GTRecipeBuilder chancedInput(FluidStack stack, int chance, int tierChanceBoost) {
@@ -805,7 +815,17 @@ public class GTRecipeBuilder {
     }
 
     public GTRecipeBuilder chancedOutput(ItemStack stack, int chance, int tierChanceBoost) {
-        return chancedOutput(SizedIngredient.create(stack), chance, tierChanceBoost);
+        if (checkChanceAndPrintError(chance)) {
+            return this;
+        }
+        int lastChance = this.chance;
+        int lastTierChanceBoost = this.tierChanceBoost;
+        this.chance = chance;
+        this.tierChanceBoost = tierChanceBoost;
+        outputItems(stack);
+        this.chance = lastChance;
+        this.tierChanceBoost = lastTierChanceBoost;
+        return this;
     }
 
     public GTRecipeBuilder chancedOutput(FluidStack stack, int chance, int tierChanceBoost) {
